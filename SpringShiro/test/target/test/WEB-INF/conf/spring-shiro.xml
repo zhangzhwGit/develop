@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+
+    <bean id="customRealm" class="com.zzw.login.realm.CustomRealm"></bean>
+    <!--第一步：直接配置一个 securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm"/>
+    </bean>
+
+    <bean id="urlPathMatchingFilter" class="com.zzw.login.filter.URLPathMatchingFilter"></bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login"/>
+        <property name="successUrl" value="/home"/>
+        <property name="unauthorizedUrl" value="/403"/>
+        <property name="filters">
+            <util:map>
+                <entry key="url" value-ref="urlPathMatchingFilter"/>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /login = anon
+                /logout = anon
+                /static/** = anon
+                /403 = anon
+
+                /** = url
+            </value>
+        </property>
+    </bean>
+
+
+
+</beans>
