@@ -56,7 +56,7 @@ public class CustomRealm extends AuthorizingRealm {
             //账户不存在
             throw new UnknownAccountException();
         }
-        if (!user.getPassword().equals(Md5Factory.getMd5HashStr(password, user.getAuthSalt(), user.getSuthSaltNum()))) {
+        if (!user.getPassword().equals(Md5Factory.getMd5HashStr(password, user.getAuthSalt(), user.getAuthSaltNum()))) {
             //密码不正确
             throw new IncorrectCredentialsException();
         }

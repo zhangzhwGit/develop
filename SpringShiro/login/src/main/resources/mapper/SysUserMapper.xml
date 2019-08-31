@@ -7,7 +7,7 @@
         <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="auth_salt" jdbcType="VARCHAR" property="authSalt"/>
-        <result column="suth_salt_num" jdbcType="INTEGER" property="suthSaltNum"/>
+        <result column="auth_salt_num" jdbcType="INTEGER" property="authSaltNum"/>
         <result column="status" jdbcType="TINYINT" property="status"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
     </resultMap>
@@ -72,7 +72,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    user_id, user_name, nick_name, password, auth_salt, suth_salt_num, status, remark
+    user_id, user_name, nick_name, password, auth_salt, auth_salt_num, status, remark
   </sql>
     <select id="selectByExample" parameterType="com.zzw.login.pojo.SysUserExample" resultMap="BaseResultMap">
         select
@@ -106,10 +106,10 @@
     </delete>
     <insert id="insert" parameterType="com.zzw.login.pojo.SysUser">
     insert into sysauth_user (user_id, user_name, nick_name, 
-      password, auth_salt, suth_salt_num, 
+      password, auth_salt, auth_salt_num, 
       status, remark)
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{authSalt,jdbcType=VARCHAR}, #{suthSaltNum,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR}, #{authSalt,jdbcType=VARCHAR}, #{authSaltNum,jdbcType=INTEGER}, 
       #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.zzw.login.pojo.SysUser">
@@ -130,8 +130,8 @@
             <if test="authSalt != null">
                 auth_salt,
             </if>
-            <if test="suthSaltNum != null">
-                suth_salt_num,
+            <if test="authSaltNum != null">
+                auth_salt_num,
             </if>
             <if test="status != null">
                 status,
@@ -156,8 +156,8 @@
             <if test="authSalt != null">
                 #{authSalt,jdbcType=VARCHAR},
             </if>
-            <if test="suthSaltNum != null">
-                #{suthSaltNum,jdbcType=INTEGER},
+            <if test="authSaltNum != null">
+                #{authSaltNum,jdbcType=INTEGER},
             </if>
             <if test="status != null">
                 #{status,jdbcType=TINYINT},
@@ -191,8 +191,8 @@
             <if test="record.authSalt != null">
                 auth_salt = #{record.authSalt,jdbcType=VARCHAR},
             </if>
-            <if test="record.suthSaltNum != null">
-                suth_salt_num = #{record.suthSaltNum,jdbcType=INTEGER},
+            <if test="record.authSaltNum != null">
+                auth_salt_num = #{record.authSaltNum,jdbcType=INTEGER},
             </if>
             <if test="record.status != null">
                 status = #{record.status,jdbcType=TINYINT},
@@ -212,7 +212,7 @@
         nick_name = #{record.nickName,jdbcType=VARCHAR},
         password = #{record.password,jdbcType=VARCHAR},
         auth_salt = #{record.authSalt,jdbcType=VARCHAR},
-        suth_salt_num = #{record.suthSaltNum,jdbcType=INTEGER},
+        auth_salt_num = #{record.authSaltNum,jdbcType=INTEGER},
         status = #{record.status,jdbcType=TINYINT},
         remark = #{record.remark,jdbcType=VARCHAR}
         <if test="_parameter != null">
@@ -234,8 +234,8 @@
             <if test="authSalt != null">
                 auth_salt = #{authSalt,jdbcType=VARCHAR},
             </if>
-            <if test="suthSaltNum != null">
-                suth_salt_num = #{suthSaltNum,jdbcType=INTEGER},
+            <if test="authSaltNum != null">
+                auth_salt_num = #{authSaltNum,jdbcType=INTEGER},
             </if>
             <if test="status != null">
                 status = #{status,jdbcType=TINYINT},
@@ -252,14 +252,15 @@
       nick_name = #{nickName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       auth_salt = #{authSalt,jdbcType=VARCHAR},
-      suth_salt_num = #{suthSaltNum,jdbcType=INTEGER},
+      auth_salt_num = #{authSaltNum,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       remark = #{remark,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 
     <select id="queryUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"/>
+        select
+        <include refid="Base_Column_List"/>
         from sysauth_user where user_name = #{username,jdbcType=VARCHAR} or nick_name = #{username,jdbcType=VARCHAR}
     </select>
 
@@ -273,9 +274,9 @@
     </select>
 
     <select id="queryPermissionsByRoles" parameterType="java.util.List" resultType="java.lang.String">
-        select t1.permission_name from sysauth_permission t1 where exists 
-        (select 1 from sysauth_role_permission t2 where t1.permission_id = t2.permission_id and t2.role_id in 
-        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+        select t1.permission_name from sysauth_permission t1 where exists
+        (select 1 from sysauth_role_permission t2 where t1.permission_id = t2.permission_id and t2.role_id in
+        <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
             #{item,jdbcType=INTEGER}
         </foreach>
         ) group by t1.permission_id

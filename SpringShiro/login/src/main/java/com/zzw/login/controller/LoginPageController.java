@@ -3,6 +3,8 @@ package com.zzw.login.controller;
 import com.zzw.login.factory.Md5Factory;
 import com.zzw.login.pojo.ResponseResult;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -10,7 +12,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginPageController {
+    private Logger logger = LogManager.getLogger(LoginPageController.class);
 
     @GetMapping("/login")
     public String toLoginPage() {
@@ -48,6 +50,11 @@ public class LoginPageController {
         Subject user = SecurityUtils.getSubject();
         try {
             user.login(token);
+            //测试日志
+            logger.debug("登录成功！");
+            logger.info("登录成功！");
+            logger.warn("登录成功！");
+            logger.error("登录成功！");
         } catch (UnknownAccountException u) {
             model.addAttribute("loginMsg", "用户不存在！");
             return ResponseResult.fail("用户不存在！");

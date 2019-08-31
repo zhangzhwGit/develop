@@ -11,7 +11,7 @@ public class SysUser {
 
     private String authSalt;
 
-    private Integer suthSaltNum;
+    private Integer authSaltNum;
 
     private Byte status;
 
@@ -57,12 +57,12 @@ public class SysUser {
         this.authSalt = authSalt == null ? null : authSalt.trim();
     }
 
-    public Integer getSuthSaltNum() {
-        return suthSaltNum;
+    public Integer getAuthSaltNum() {
+        return authSaltNum;
     }
 
-    public void setSuthSaltNum(Integer suthSaltNum) {
-        this.suthSaltNum = suthSaltNum;
+    public void setAuthSaltNum(Integer authSaltNum) {
+        this.authSaltNum = authSaltNum;
     }
 
     public Byte getStatus() {

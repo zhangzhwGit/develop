@@ -35,14 +35,13 @@ public interface SysUserMapper {
 
     SysUser queryUserByName(String username) throws DataAccessException;
 
-    List<String> queryRolesByUserId(Integer userId) throws DataAccessException;
+    List<String> queryRolesByUserId(int userId) throws DataAccessException;
 
-    List<Integer> queryRoleIdsByUserId(Integer userId) throws DataAccessException;
+    List<Integer> queryRoleIdsByUserId(int userId) throws DataAccessException;
 
     List<String> queryPermissionsByRoles(List<Integer> roles) throws DataAccessException;
 
     int countRequestUri(@Param("url") String url) throws DataAccessException;
 
-    List<String> queryMenusByUserId(Integer userId) throws DataAccessException;
-
+    List<String> queryMenusByUserId(int userId) throws DataAccessException;
 }

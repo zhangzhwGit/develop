@@ -444,63 +444,63 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumIsNull() {
-            addCriterion("suth_salt_num is null");
+        public Criteria andAuthSaltNumIsNull() {
+            addCriterion("auth_salt_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumIsNotNull() {
-            addCriterion("suth_salt_num is not null");
+        public Criteria andAuthSaltNumIsNotNull() {
+            addCriterion("auth_salt_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumEqualTo(Integer value) {
-            addCriterion("suth_salt_num =", value, "suthSaltNum");
+        public Criteria andAuthSaltNumEqualTo(Integer value) {
+            addCriterion("auth_salt_num =", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumNotEqualTo(Integer value) {
-            addCriterion("suth_salt_num <>", value, "suthSaltNum");
+        public Criteria andAuthSaltNumNotEqualTo(Integer value) {
+            addCriterion("auth_salt_num <>", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumGreaterThan(Integer value) {
-            addCriterion("suth_salt_num >", value, "suthSaltNum");
+        public Criteria andAuthSaltNumGreaterThan(Integer value) {
+            addCriterion("auth_salt_num >", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("suth_salt_num >=", value, "suthSaltNum");
+        public Criteria andAuthSaltNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("auth_salt_num >=", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumLessThan(Integer value) {
-            addCriterion("suth_salt_num <", value, "suthSaltNum");
+        public Criteria andAuthSaltNumLessThan(Integer value) {
+            addCriterion("auth_salt_num <", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumLessThanOrEqualTo(Integer value) {
-            addCriterion("suth_salt_num <=", value, "suthSaltNum");
+        public Criteria andAuthSaltNumLessThanOrEqualTo(Integer value) {
+            addCriterion("auth_salt_num <=", value, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumIn(List<Integer> values) {
-            addCriterion("suth_salt_num in", values, "suthSaltNum");
+        public Criteria andAuthSaltNumIn(List<Integer> values) {
+            addCriterion("auth_salt_num in", values, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumNotIn(List<Integer> values) {
-            addCriterion("suth_salt_num not in", values, "suthSaltNum");
+        public Criteria andAuthSaltNumNotIn(List<Integer> values) {
+            addCriterion("auth_salt_num not in", values, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumBetween(Integer value1, Integer value2) {
-            addCriterion("suth_salt_num between", value1, value2, "suthSaltNum");
+        public Criteria andAuthSaltNumBetween(Integer value1, Integer value2) {
+            addCriterion("auth_salt_num between", value1, value2, "authSaltNum");
             return (Criteria) this;
         }
 
-        public Criteria andSuthSaltNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("suth_salt_num not between", value1, value2, "suthSaltNum");
+        public Criteria andAuthSaltNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("auth_salt_num not between", value1, value2, "authSaltNum");
             return (Criteria) this;
         }
 
