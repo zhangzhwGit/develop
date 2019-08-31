@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80017
+ Source Server Version : 80012
  Source Host           : localhost:3306
  Source Schema         : testdb
 
  Target Server Type    : MySQL
- Target Server Version : 80017
+ Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 29/08/2019 22:37:49
+ Date: 31/08/2019 17:19:42
 */
 
 SET NAMES utf8mb4;
@@ -109,7 +109,7 @@ CREATE TABLE `sysauth_user`  (
   `nick_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户昵称',
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
   `auth_salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '加密值（盐值）',
-  `suth_salt_num` int(11) NULL DEFAULT NULL COMMENT '加密次数',
+  `auth_salt_num` int(11) NULL DEFAULT NULL COMMENT '加密次数',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标记',
   PRIMARY KEY (`user_id`) USING BTREE
@@ -120,6 +120,7 @@ CREATE TABLE `sysauth_user`  (
 -- ----------------------------
 INSERT INTO `sysauth_user` VALUES (1, '00001', 'zzw', '455d11d50914a83bfe35b4bbc4608b54', '00001zzw', 3, NULL, NULL);
 INSERT INTO `sysauth_user` VALUES (2, '00002', 'yc', 'd773ef4c18f8d0fc2ad4e00211f153cb', '00002yc', 5, NULL, NULL);
+INSERT INTO `sysauth_user` VALUES (3, '00003', 'yc', 'd773ef4c18f8d0fc2ad4e00211f153cb', '00002yc', 5, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sysauth_user_role
