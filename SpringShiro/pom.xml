@@ -18,7 +18,7 @@
         <log4j-version>2.12.1</log4j-version>
         <servlet-version>1.2</servlet-version>
         <servlet-api-version>4.0.0</servlet-api-version>
-        <jsckson-version>2.9.9.3</jsckson-version>
+        <jsckson-version>2.10.0</jsckson-version>
         <shiro-version>1.4.1</shiro-version>
     </properties>
     <dependencies>
