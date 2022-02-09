@@ -19,7 +19,7 @@
         <servlet-version>1.2</servlet-version>
         <servlet-api-version>4.0.0</servlet-api-version>
         <jsckson-version>2.9.9.3</jsckson-version>
-        <shiro-version>1.4.1</shiro-version>
+        <shiro-version>1.7.1</shiro-version>
     </properties>
     <dependencies>
         <dependency>
