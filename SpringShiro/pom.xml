@@ -14,7 +14,7 @@
     </modules>
     <properties>
         <app-version>1.0-SNAPSHOT</app-version>
-        <spring-version>5.1.5.RELEASE</spring-version>
+        <spring-version>5.3.19</spring-version>
         <log4j-version>2.12.1</log4j-version>
         <servlet-version>1.2</servlet-version>
         <servlet-api-version>4.0.0</servlet-api-version>
